@@ -32,7 +32,7 @@ def a_nice_function(
 def another_function(
         name: str,
         age: int,
-): 
+):
     '''This function does something else.
 
     Parameters
@@ -81,5 +81,4 @@ def public_helper():
     None
 
     '''
-    
     _helper_function(42)  # Call the private helper function
