@@ -69,7 +69,7 @@ def a_function():
     '''
     pass
 ```
-It can be accessed from within the code by using the `.__doc__` attribute of the function object. Autodoc will go into your modules and look for the docstrings to put them into the documentation. In principle, you can do whatever you want with your docstrings, but a bit of formatting will help autodoc take care of all the rest. While the original syntax for autodoc is a bit obscure, the `napoleon` extension allows you to write in a more human readable form, using the Google or the Numpy format. 
+It can be accessed from within the code by using the `.__doc__` attribute of the function object. Autodoc will go into your modules and look for the docstrings to put them into the documentation. In principle, you can do whatever you want with your docstrings, but a bit of formatting will help autodoc take care of all the rest. While the original syntax for autodoc is a bit obscure, the [`napoleon` extension](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html) allows you to write in a more human readable form, using the Google or the Numpy format. 
 An example of a Google-style docstring.
 ```python
 def func(arg1, arg2):
