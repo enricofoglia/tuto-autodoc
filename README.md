@@ -1,6 +1,6 @@
 # Autodoc: please make your code readable
 
-Code is nice. Readable code is *nicer*. Readable code that comes with a nicely structured documentation is fucking **awesome**. And all you have to do is follow some simple steps and install a couple packages. Really, you have no escuses.
+Code is nice. Readable code is *nicer*. Readable code that comes with a nicely structured documentation is fucking **awesome**. And all you have to do is follow some simple steps and install a couple packages. Really, you have no excuses.
 
 1. **Install UV**: [UV](https://docs.astral.sh/uv/) is a virtual environment and package manager for python written in rust. 
 2. **Initialize your project**: run
@@ -51,4 +51,62 @@ Code is nice. Readable code is *nicer*. Readable code that comes with a nicely s
     make <format>
     ```
     nice formats are `html` and `latexpdf`, but honestly the sky (installed sphinx libraries) is the limit! The compiled files are going to be in the `docs/build/<format>` directory.
-   
+8. **Styling (optional)**: you can now go crazy and personalyze your html documentation. Sphinx has a bunch of nice [html templates](https://sphinx-themes.org/), but one that I particularly like is [furo](https://sphinx-themes.org/sample-sites/furo/). To you it, add it to the project:
+```
+uv add furo
+```
+and change the theme in the `conf.py` file:
+```python
+html_theme = 'furo'
+```
+
+## On the docstrings
+This whole thing will make your documentation look nice, but writing the documentation itself is, again, your responsibility. The way to do it is to equip all classes and functions with *docstrings*. A docstring is a string delimited by three `'''<.>'''` or `"""<.>"""`, placed immediately after the definition of the function:
+```python
+def a_function():
+    '''
+    A docstring
+    '''
+    pass
+```
+It can be accessed from within the code by using the `.__doc__` attribute of the function object. Autodoc will go into your modules and look for the docstrings to put them into the documentation. In principle, you can do whatever you want with your docstrings, but a bit of formatting will help autodoc take care of all the rest. While the original syntax for autodoc is a bit obscure, the `napoleon` extension allows you to write in a more human readable form, using the Google or the Numpy format. 
+An example of a Google-style docstring.
+```python
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Args:
+        arg1 (int): Description of arg1
+        arg2 (str): Description of arg2
+
+    Returns:
+        bool: Description of return value
+
+    """
+    return True
+```
+And a Numpy-style:
+```python
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Parameters
+    ----------
+    arg1 : int
+        Description of arg1
+    arg2 : str
+        Description of arg2
+
+    Returns
+    -------
+    bool
+        Description of return value
+
+    """
+    return True
+```
+Both are understood by `napoleon`. Just choose one and stick to it.
